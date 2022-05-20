@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { onChangeArgs, Product } from '../interfaces/interfaces';
 
 interface useProductArgs {
@@ -10,13 +10,7 @@ interface useProductArgs {
 export const useProduct = ( {onChange, product, value = 0 }: useProductArgs ) => {
     const [counter, setCounter] = useState(value);
 
-    const isControl = useRef(!!onChange) // sin esto tambien funcionaria quitando el comentario de la fn onProductCountChange
-
     const increaseBy = (value: number) => {
-        
-        if (isControl.current) {
-            return onChange!({count: value, product})
-        }
 
         const newValue = Math.max(counter + value, 0);
         
